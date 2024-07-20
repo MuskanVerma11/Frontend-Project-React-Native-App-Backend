@@ -60,11 +60,12 @@ app.post("/login",async(req,res)=>{
         if(await bcrypt.compare(password,oldUser.password)){
             const token=jwt.sign({email:oldUser.email}, JWT_SECRET);
             if(res.status(201)){
+                console.log(res);
                 return res.send({status:"ok", data:token});
             }else{
+                console.log(res);
                 return res.send({error:"error"});
             }
-            console.log(res);
         }
     }catch(error){
         console.log(error);
